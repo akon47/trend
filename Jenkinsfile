@@ -13,6 +13,9 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
+                script {
+                  currentBuild.getChangeSets().clear()
+                }
                 echo 'Clonning Repository'
                 git url: 'git@github.com:akon47/trend.git', branch: 'master', credentialsId: GITHUB_CREDENTIALS_ID
             }
