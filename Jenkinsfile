@@ -11,21 +11,6 @@ pipeline {
     }
 
     stages {
-        stage('Clone') {
-            steps {
-                echo 'Clonning Repository'
-                git url: 'git@github.com:akon47/trend.git', branch: 'master', credentialsId: GITHUB_CREDENTIALS_ID
-            }
-            post {
-                success {
-                    echo 'Successfully Cloned Repository'
-                }
-                failure {
-                    error 'This pipeline stops here...'
-                }
-            }
-        }
-
         stage('Bulid Docker') {
             steps {
                 echo 'Bulid Docker'
